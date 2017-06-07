@@ -8,6 +8,6 @@
         "botkit": "^0.5.4"
     },
     "scripts": {
-        "start": "token=xoxb-193503948737-ZKmGpvPWiE9VexNzW7XgyHfG nodemon ."
+        "start": "node ."
     }
 }

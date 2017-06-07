@@ -27,7 +27,8 @@ controller.on('direct_mention', (bot, message) => {
             return bot.reply(message, 'Please include one score only');
         }
 
-        score = score.pop;
+        score = score.pop();
+        console.log(score);
 
         let students = query.filter(item => {
             return item.includes('<@');
@@ -37,7 +38,7 @@ controller.on('direct_mention', (bot, message) => {
             return bot.reply(message, 'Please include at least one student');
         }
 
-        axios.post(`http://localhost:8081/slack/attendance/${score}`, {score, students})
+        axios.post(`http://3bbd8974.ngrok.io/slack/attendance/${score}`, {score, students})
             .then(() => bot.reply(message, 'I took their attendance'))
             .catch(err => bot.reply(message, `Shit something went wrong ${err.message}`));
 
@@ -50,6 +51,6 @@ controller.on('direct_mention', (bot, message) => {
 //------------------------------------------------------------------------------------------
 // Other replies
 
-    bot.reply(message, `Oh no, couldn't figure out what you said there 💩`);
+    // bot.reply(message, `Oh no, couldn't figure out what you said there 💩`);
 
 });
